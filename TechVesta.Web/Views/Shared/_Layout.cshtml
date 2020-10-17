@@ -1,0 +1,164 @@
+﻿    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+
+        <!-- Basic -->
+        <meta charset="utf-8">
+
+
+        <link rel="canonical" href="~/index.html" />
+        <title>Techvesta Limited</title>
+
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Web Fonts  -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+        <!-- Libs CSS -->
+        <link rel="stylesheet" href="~/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/fonts/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="~/lib/flexslider/flexslider.css" media="screen" />
+        <link rel="stylesheet" href="~/lib/fancybox/jquery.fancybox.css" media="screen" />
+
+        <!-- Theme CSS -->
+        <link rel="stylesheet" href="~/css/theme.css">
+        <link rel="stylesheet" href="~/css/theme-elements.css">
+
+        <!-- Current Page Styles -->
+        <link rel="stylesheet" href="~/lib/revolution-slider/css/settings.css" media="screen" />
+        <link rel="stylesheet" href="~/lib/revolution-slider/css/captions.css" media="screen" />
+        <link rel="stylesheet" href="~/lib/circle-flip-slideshow/css/component.css" media="screen" />
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="~/css/site.css">
+
+        <!-- Skin -->
+        <link rel="stylesheet" href="~/css/skins/blue.css">
+
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="~/css/bootstrap-responsive.css" />
+        <link rel="stylesheet" href="~/css/theme-responsive.css" />
+
+        <!-- Favicons -->
+        <link rel="shortcut icon" href="~/img/favicon.ico">
+        <link rel="apple-touch-icon" href="~/img/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="~/img/apple-touch-icon-72x72.html">
+        <link rel="apple-touch-icon" sizes="114x114" href="~/img/apple-touch-icon-114x114.html">
+        <link rel="apple-touch-icon" sizes="144x144" href="~/img/apple-touch-icon-144x144.html">
+
+        <!-- Head Libs -->
+        <script src="~/lib/modernizr.js"></script>
+
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1 class="logo" title="Web Designing Company ">
+                    <a href="~/index.html" title="Leading - Digital Marketing & Web Designing Company ">
+                        <img src="~/img/logo.png" alt="Techvesta Limited - Digital Marketing & Web Designing Company " title="Techvesta Limited - Digital Marketing & Web Designing Company " width="350" height="80">
+                    </a>
+                </h1>
+
+                <nav style="height:40px;margin-top:32px;">
+                    <ul class="nav nav-pills nav-main" id="mainMenu">
+                        <li class="dropdown active">
+                            <a class="dropdown-toggle" asp-action="index" asp-controller="Home" title="Techvesta Limited">Home</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" asp-action="About" asp-controller="Home">About Us<i class="icon-angle-down"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="~/#">
+                                Services
+                                <i class="icon-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-action="WebDevelopment" asp-controller="Service">Website Development </a></li>
+                                <li><a asp-action="SoftwareDevelopment" asp-controller="Service">Software Development </a></li>
+                                <li><a asp-action="WebSiteDesign" asp-controller="Service">Website Design</a></li>
+                                <li><a asp-action="Seo" asp-controller="Service">Seo</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="~/#">
+                                Plans
+                                <i class="icon-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-action="Plans" asp-controller="Plan">Service Plans</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" asp-action="ContactUs" asp-controller="Home">Contact Us<i class="icon-angle-down"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer>
+            <div class="footer-copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="span7">
+                            <p>Copyright ©  2020, All rights reserved by  Techvesta Limited</p>
+                        </div>
+                        <div class="span4">
+                            <nav id="sub-menu">
+                                <ul>
+                                    <li><a asp-action="TAndC" asp-controller="Policy">Terms and Conditions</a></li>
+                                    <li><a asp-action="Privacy" asp-controller="Policy">Privacy</a></li>
+                                    <li><a asp-action="RefundPolicy" asp-controller="Policy">Refund Policy</a></li>
+                                    <li><a asp-action="Disclaimer" asp-controller="Policy">Disclaimer</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="~/~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/~/js/site.js" asp-append-version="true"></script>
+
+        <!-- Libs -->
+        <script type="text/javascript" src="~/../ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="~/vendor/jquery.js"><\/script>')</script>
+        <script src="~/lib/jquery.easing.js"></script>
+        <script src="~/lib/jquery.cookie.js"></script>
+        <!-- <script src="~/master/style-switcher/style.switcher.js"></script> -->
+        <script src="~/lib/bootstrap.js"></script>
+        <script src="~/lib/selectnav.js"></script>
+        <script src="~/lib/twitterjs/twitter.js"></script>
+        <script src="~/lib/revolution-slider/js/jquery.themepunch.plugins.js"></script>
+        <script src="~/lib/revolution-slider/js/jquery.themepunch.revolution.js"></script>
+        <script src="~/lib/flexslider/jquery.flexslider.js"></script>
+        <script src="~/lib/circle-flip-slideshow/js/jquery.flipshow.js"></script>
+        <script src="~/lib/fancybox/jquery.fancybox.js"></script>
+        <script src="~/lib/jquery.validate.js"></script>
+
+        <script src="~/js/plugins.js"></script>
+
+        <!-- Current Page Scripts -->
+        <script src="~/js/views/view.home.js"></script>
+
+        <!-- Theme Initializer -->
+        <script src="~/js/theme.js"></script>
+
+        <!-- Custom JS -->
+        <script src="~/js/custom.js"></script>
+
+        @RenderSection("Scripts", required: false)
+    </body>
+    </html>
