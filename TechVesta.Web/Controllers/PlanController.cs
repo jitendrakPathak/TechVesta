@@ -16,11 +16,6 @@ namespace TechVesta.Web.Controllers
             return View();
         }
 
-        public IActionResult Plans()
-        {
-            return View();
-        }
-
         public IActionResult WebsitePlan()
         {
             return View();

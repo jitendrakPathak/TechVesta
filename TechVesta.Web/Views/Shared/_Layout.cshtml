@@ -6,7 +6,7 @@
         <meta charset="utf-8">
 
 
-        <link rel="canonical" href="~/index.html" />
+        <link rel="canonical" asp-action="index" asp-controller="Home"/>
         <title>Techvesta Limited</title>
 
         <!-- Mobile Metas -->
@@ -55,7 +55,7 @@
         <header>
             <div class="container">
                 <h1 class="logo" title="Web Designing Company ">
-                    <a href="~/index.html" title="Leading - Digital Marketing & Web Designing Company ">
+                    <a asp-action="index" asp-controller="Home" title="Leading - Digital Marketing & Web Designing Company ">
                         <img src="~/img/logo.png" alt="Techvesta Limited - Digital Marketing & Web Designing Company " title="Techvesta Limited - Digital Marketing & Web Designing Company " width="350" height="80">
                     </a>
                 </h1>
@@ -63,11 +63,11 @@
                 <nav style="height:40px;margin-top:32px;">
                     <ul class="nav nav-pills nav-main" id="mainMenu">
                         <li class="dropdown active">
-                            <a class="dropdown-toggle" asp-action="index" asp-controller="Home" title="Techvesta Limited">Home</a>
+                            <a class="dropdown-toggle" asp-action="Index" asp-controller="Home">Home</a>
                         </li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle" asp-action="About" asp-controller="Home">About Us<i class="icon-angle-down"></i></a>
+                            <a class="dropdown-toggle" asp-action="About" asp-controller="Home">About Us</a>
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="~/#">
@@ -83,13 +83,15 @@
                         </li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle" href="~/#">
+                            <a class="dropdown-toggle" asp-action="Index" asp-controller="Plan">
                                 Plans
                                 <i class="icon-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a asp-action="Plans" asp-controller="Plan">Service Plans</a></li>
-
+                                <li><a asp-action="HostingPlan" asp-controller="Plan">Hosting Plans</a></li>
+                                <li><a asp-action="SeoPlan" asp-controller="Plan">SEO Plans</a></li>
+                                <li><a asp-action="SupportPlan" asp-controller="Plan">Support Plans</a></li>
+                                <li><a asp-action="WebsitePlan" asp-controller="Plan">Website Plans</a></li>
                             </ul>
                         </li>
 
@@ -128,12 +130,12 @@
                 </div>
             </div>
         </footer>
-        <script src="~/~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
 
         <!-- Libs -->
-        <script type="text/javascript" src="~/../ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="~/vendor/jquery.js"><\/script>')</script>
         <script src="~/lib/jquery.easing.js"></script>
         <script src="~/lib/jquery.cookie.js"></script>

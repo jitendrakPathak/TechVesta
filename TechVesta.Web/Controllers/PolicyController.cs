@@ -10,12 +10,6 @@ namespace TechVesta.Web.Controllers
 {
     public class PolicyController : Controller
     {
-        // GET: /<controller>/
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult TAndC()
         {
             return View();

@@ -1,102 +1,148 @@
-﻿@{
-    ViewData["Title"] = "ContactUs";
-}
+﻿    @{
+        ViewData["Title"] = "ContactUs";
+    }
 
-<div role="main" class="main">
+    <div role="main" class="main">
 
-    <section class="page-top">
+        <section class="page-top">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <ul class="breadcrumb">
+                            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+                            <li class="active">Contact Us</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span12">
+                        <h2>Contact Us</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Google Maps -->
+
+
         <div class="container">
+
             <div class="row">
-                <div class="span12">
-                    <ul class="breadcrumb">
-                        <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-                        <li class="active">Contact Us</li>
-                    </ul>
+                <div class="span6">
+
+                    <div class="alert alert-success hidden" id="contactSuccess">
+                        <strong>Success!</strong> Your message has been sent to us.
+                    </div>
+
+                    <div class="alert alert-error hidden" id="contactError">
+                        <strong>Error!</strong> There was an error sending your message.
+                    </div>
+
+                    <h1 style="color:#0077cc;">Enquiry  <span style="font-size:18px;"> Drop us a line using contact form below </span></h1>
+                    <form name="contact" action="#" onSubmit="return validate_form()" method="post" class="contact">
+                        <div class="row controls">
+                            <div class="span3 control-group">
+                                <label>Your Name: *</label>
+                                <input type="text" value="" maxlength="100" class="span3" name="name2" id="name2">
+                            </div>
+                            <div class="span3 control-group">
+                                <label>Your email address *</label>
+                                <input type="email" value="" maxlength="100" class="span3" name="email" id="email">
+                            </div>
+                        </div>
+                        <div class="row controls">
+                            <div class="span3 control-group">
+                                <label>Contact Number: *</label>
+                                <input type="number" value="" maxlength="100" class="span3" name="cnum" id="cnum">
+                            </div>
+                            <div class="span3 control-group">
+                                <label>Required Services</label>
+                                <input type="text" value="" maxlength="100" class="span3" name="services" id="services">
+                            </div>
+                        </div>
+                        <div class="row controls">
+                            <div class="span6 control-group">
+                                <label>Tell Us Everything: *</label>
+                                <textarea maxlength="5000" rows="10" class="span6" name="comments" id="comments"></textarea>
+                            </div>
+                        </div>
+                        <div class="btn-toolbar">
+                            <input type="submit" value="Send Message" class="btn btn-primary btn-large" data-loading-text="Loading...">
+                        </div>
+                        <div id="errorlbl" style="color:#F00;"></div>
+
+                    </form>
                 </div>
-            </div>
-            <div class="row">
-                <div class="span12">
-                    <h2>Contact Us</h2>
+
+
+                <div class="span5" style="margin-left:100px;">
+                    <br><br>
+                    <img src="~/img/logo.png">
+                    <hr>
+                    <div style="margin-left:80px;">
+                        <h4 style="font-size:20px;font-family:Tahoma,sans-serif;color:#330066;"></h4>
+                            <b>Techvesta Limited</b>
+                            <h5>5 MCMEEKAN AVENUE , CHARTWELL </h5>
+                                <h5>HAMILTON ,3210 , NZ</h5>
+                                <h5>Email : <a href='mailto : support@techvesta.co.nz '>support@techvesta.co.nz </a></h5>
+
+                                <h5>
+                                    Call Us : +64-210-812-9267 <br><br />
+                                    <b>Office Hrs</b><br>
+                                    Mon-Fri:  9 AM - 5 PM (NZ ST)<br />
+                                    Sat-Sun:  Closed
+                                </h5>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Google Maps -->
-
-
-    <div class="container">
-
-        <div class="row">
-            <div class="span6">
-
-                <div class="alert alert-success hidden" id="contactSuccess">
-                    <strong>Success!</strong> Your message has been sent to us.
-                </div>
-
-                <div class="alert alert-error hidden" id="contactError">
-                    <strong>Error!</strong> There was an error sending your message.
-                </div>
-
-                <h1 style="color:#0077cc;">Enquiry  <span style="font-size:18px;"> Drop us a line using contact form below </span></h1>
-                <form name="contact" action="#" onSubmit="return validate_form()" method="post" class="contact">
-                    <div class="row controls">
-                        <div class="span3 control-group">
-                            <label>Your Name: *</label>
-                            <input type="text" value="" maxlength="100" class="span3" name="name2" id="name2">
-                        </div>
-                        <div class="span3 control-group">
-                            <label>Your email address *</label>
-                            <input type="email" value="" maxlength="100" class="span3" name="email" id="email">
-                        </div>
-                    </div>
-                    <div class="row controls">
-                        <div class="span3 control-group">
-                            <label>Contact Number: *</label>
-                            <input type="number" value="" maxlength="100" class="span3" name="cnum" id="cnum">
-                        </div>
-                        <div class="span3 control-group">
-                            <label>Required Services</label>
-                            <input type="text" value="" maxlength="100" class="span3" name="services" id="services">
-                        </div>
-                    </div>
-                    <div class="row controls">
-                        <div class="span6 control-group">
-                            <label>Tell Us Everything: *</label>
-                            <textarea maxlength="5000" rows="10" class="span6" name="comments" id="comments"></textarea>
-                        </div>
-                    </div>
-                    <div class="btn-toolbar">
-                        <input type="submit" value="Send Message" class="btn btn-primary btn-large" data-loading-text="Loading...">
-                    </div>
-                    <div id="errorlbl" style="color:#F00;"></div>
-
-                </form>
-            </div>
-
-
-            <div class="span5" style="margin-left:100px;">
-                <br><br>
-                <img src="~/img/logo.png">
-                <hr>
-                <div style="margin-left:80px;">
-                    <h4 style="font-size:20px;font-family:Tahoma,sans-serif;color:#330066;"></h4>
-                        <b>Techvesta Limited</b>
-                        <h5>5 MCMEEKAN AVENUE , CHARTWELL </h5>
-                            <h5>HAMILTON ,3210 , NZ</h5>
-                            <h5>Email : <a href='mailto : support@techvesta.co.nz '>support@techvesta.co.nz </a></h5>
-
-                            <h5>
-                                Call Us : +64-210-812-9267 <br><br />
-                                <b>Office Hrs</b><br>
-                                Mon-Fri:  9 AM - 5 PM (NZ ST)<br />
-                                Sat-Sun:  Closed
-                            </h5>
-                </div>
-
-            </div>
-        </div>
-
     </div>
+    <script>
+        function validate_form() {
+            valid = true;
 
-</div>
+            if (document.contact.name2.value == "") {
+                document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Name box!</span>';
+                valid = false;
+                document.contact.name2.focus();
+                return valid;
+            }
+            if (document.contact.cnum.value == "") {
+                document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Contact Number box!</span>';
+                valid = false;
+                document.contact.cnum.focus();
+                return valid;
+            }
+            if (document.contact.cnum.value != "") {
+                var y = document.contact.cnum.value;
+
+                if (isNaN(y) || y.indexOf(" ") != -1) {
+                    document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Valid Mobile No.! i.e. No white space and Numeric only</span>';
+                    valid = false;
+                    document.contact.cnum.focus();
+                    return valid;
+                }
+                if (y.length != 10) {
+                    document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Valid Mobile No.! i.e. 10 digits only.</span>';
+                    valid = false;
+                    document.contact.cnum.focus();
+                    return valid;
+                }
+            }
+            if (document.contact.email.value == "") {
+                document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the E-mail Id box!</span>';
+                valid = false;
+                document.contact.email.focus();
+                return valid;
+            }
+            if (document.contact.comments.value == "") {
+                document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Query box!</span>';
+                valid = false;
+                document.contact.comments.focus();
+                return valid;
+            }
+            document.getElementById('errorlbl').innerHTML = '<span class=success>Your Query has been Sent Successfully!</span>';
+            return valid;
+        }
+
+    </script>
