@@ -5,8 +5,7 @@
         <!-- Basic -->
         <meta charset="utf-8">
 
-
-        <link rel="canonical" asp-action="index" asp-controller="Home"/>
+        <link rel="canonical" asp-action="index" asp-controller="Home" />
         <title>Techvesta Limited</title>
 
         <!-- Mobile Metas -->
@@ -49,7 +48,7 @@
 
         <!-- Head Libs -->
         <script src="~/lib/modernizr.js"></script>
-
+        @RenderSection("Styles", required: false)
     </head>
     <body>
         <header>
@@ -59,16 +58,16 @@
                         <img src="~/img/logo.png" alt="Techvesta Limited - Digital Marketing & Web Designing Company " title="Techvesta Limited - Digital Marketing & Web Designing Company " width="350" height="80">
                     </a>
                 </h1>
-
                 <nav style="height:40px;margin-top:32px;">
                     <ul class="nav nav-pills nav-main" id="mainMenu">
-                        <li class="dropdown active">
+                        <li class="dropdown">
                             <a class="dropdown-toggle" asp-action="Index" asp-controller="Home">Home</a>
                         </li>
 
                         <li class="dropdown">
                             <a class="dropdown-toggle" asp-action="About" asp-controller="Home">About Us</a>
                         </li>
+
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="~/#">
                                 Services
@@ -78,7 +77,7 @@
                                 <li><a asp-action="WebDevelopment" asp-controller="Service">Website Development </a></li>
                                 <li><a asp-action="SoftwareDevelopment" asp-controller="Service">Software Development </a></li>
                                 <li><a asp-action="WebSiteDesign" asp-controller="Service">Website Design</a></li>
-                                <li><a asp-action="Seo" asp-controller="Service">Seo</a></li>
+                                <li><a asp-action="Seo" asp-controller="Service">SEO</a></li>
                             </ul>
                         </li>
 
@@ -88,27 +87,23 @@
                                 <i class="icon-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu">
+                                <li><a asp-action="WebsitePlan" asp-controller="Plan">Website Plans</a></li>
                                 <li><a asp-action="HostingPlan" asp-controller="Plan">Hosting Plans</a></li>
                                 <li><a asp-action="SeoPlan" asp-controller="Plan">SEO Plans</a></li>
-                                <li><a asp-action="SupportPlan" asp-controller="Plan">Support Plans</a></li>
-                                <li><a asp-action="WebsitePlan" asp-controller="Plan">Website Plans</a></li>
+                                <li><a asp-action="SupportPlan" asp-controller="Plan">Service Plans</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle" asp-action="ContactUs" asp-controller="Home">Contact Us<i class="icon-angle-down"></i></a>
+                            <a class="dropdown-toggle" asp-action="ContactUs" asp-controller="Home">Contact Us</a>
                         </li>
                     </ul>
                 </nav>
-
             </div>
         </header>
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
-
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
         <footer>
             <div class="footer-copyright">
                 <div class="container">
@@ -130,6 +125,7 @@
                 </div>
             </div>
         </footer>
+
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
@@ -143,6 +139,7 @@
         <script src="~/lib/bootstrap.js"></script>
         <script src="~/lib/selectnav.js"></script>
         <script src="~/lib/twitterjs/twitter.js"></script>
+        <script src="~/lib/twitterjs/twitterLib.js"></script>
         <script src="~/lib/revolution-slider/js/jquery.themepunch.plugins.js"></script>
         <script src="~/lib/revolution-slider/js/jquery.themepunch.revolution.js"></script>
         <script src="~/lib/flexslider/jquery.flexslider.js"></script>
@@ -152,14 +149,11 @@
 
         <script src="~/js/plugins.js"></script>
 
-        <!-- Current Page Scripts -->
-        <script src="~/js/views/view.home.js"></script>
-
         <!-- Theme Initializer -->
         <script src="~/js/theme.js"></script>
 
         <!-- Custom JS -->
-        <script src="~/js/custom.js"></script>
+        <script src="~/js/site.js"></script>
 
         @RenderSection("Scripts", required: false)
     </body>
