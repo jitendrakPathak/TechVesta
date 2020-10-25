@@ -1,4 +1,4 @@
-﻿@model TechVesta.Web.StripePayment.StripeSettings
+﻿@model TechVesta.Web.DTO.CheckoutDTO
 @{
     ViewData["Title"] = "Subscription";
 }
@@ -10,217 +10,206 @@
     <br><br>
     <div class="row">
         <header class="text-center animate bounceIn">
-            <h2>BILLING INFORMATION</h2>
-
+            <h2 style="margin: 20px 0 10px 0 !important;">BILLING INFORMATION</h2>
         </header>
     </div>
-
     <div class="row">
-        
-            <div class="span6">
-                <span style="font-size:24px;"><b>Billing Details</b></span><br>
-                <span style="font-size:14px;">
-                    <b>
-                        (The name “Techvesta Limited” will appear on cardholder statement for any transactions through this website)
-                    </b>
-                </span>
-                <br /><br />
-                <span style="font-size:14px;">
-                    <b>
-                        Techvesta<br />
-                        5 Mcmeekan Avenue, Chartwell, Hamilton 3210, New Zealand
-                    </b>
-                </span>
-                <br /><br />
-                <div class="formarea">
+        <div class="span6">
+            <span style="font-size:24px;"><b>Billing Details</b></span><br>
+            <span style="font-size:14px;">
+                <b>
+                    (The name “Techvesta Limited” will appear on cardholder statement for any transactions through this website)
+                </b>
+            </span>
+            <br /><br />
+            <span style="font-size:14px;">
+                <b>
+                    Techvesta<br />
+                    5 Mcmeekan Avenue, Chartwell, Hamilton 3210, New Zealand
+                </b>
+            </span>
+            <br /><br />
+            <div class="formarea">
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            Select Country<br>
+                            <select asp-for="Country" style="border:1px solid;background-color:#fff;color:black;width:90%;height:40px;border-radius:6px;">
+                                <option>Australia</option>
+                                <option>Canada</option>
+                                <option>New Zealand</option>
+                                <option>USA</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br>First Name:
+                            <input type="text" asp-for="FirstName" style="border:1px solid;background-color:#fff;color:black;">
+                        </td>
+                        <td>
+                            <br>Last Name:
+                            <input type="text" asp-for="LastName" style="border:1px solid;background-color:#fff;color:black;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Address:<br>
+                            <input type="text" asp-for="Address" style="width:175%;border:1px solid;background-color:#fff;color:black;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            City:<br>
+                            <input type="text" asp-for="City" style="width:175%;border:1px solid;background-color:#fff;color:black;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            State:<br>
+                            <input type="text" asp-for="State" style="border:1px solid;background-color:#fff;color:black;">
+                        </td>
 
-                    <table>
-                        <tr>
-                            <td colspan="2">
-                                Select Country<br>
-                                <select name="country" style="border:1px solid;background-color:#fff;color:black;width:90%;height:40px;border-radius:6px;">
-                                    <option>Australia</option>
-                                    <option>Canada</option>
-                                    <option>New Zealand</option>
-                                    <option>USA</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <br>First Name:
-                                <input type="text" name="firstname" style="border:1px solid;background-color:#fff;color:black;" onChange="javascript:return checkEmail();">
-                            </td>
-                            <td>
-                                <br>Last Name:
-                                <input type="text" name="lastname" style="border:1px solid;background-color:#fff;color:black;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Address:<br>
-                                <input type="text" name="address" style="width:175%;border:1px solid;background-color:#fff;color:black;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                City:<br>
-                                <input type="text" name="city" style="width:175%;border:1px solid;background-color:#fff;color:black;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                State:<br>
-                                <input type="text" name="state" style="border:1px solid;background-color:#fff;color:black;">
-                            </td>
-
-                            <td>
-                                Zip:<br>
-                                <input type="text" name="zip" style="border:1px solid;background-color:#fff;color:black;">
-                            </td>
-
-                        </tr>
-
-                        <tr>
-                            <td>
-                                Email:<br>
-                                <input type="text" name="email" style="border:1px solid;background-color:#fff;color:black;">
-                            </td>
-                            <td>
-                                Contact:<br>
-                                <input type="text" name="contact" style="border:1px solid;background-color:#fff;color:black;">
-                                <input type="hidden" name="Amount" asp-for="Amount" value="@ViewData["Amount"].ToString()" style="border:1px solid;background-color:#fff;color:black;">
-                            </td>
-
-
-                        </tr>
-                    </table>
-
-                    <img src="~/img/images/card-logo.png"><br />
-                    <img src="~/img/images/30-day-guarantee.png" style="width: 100px; height:100px;">
-                    <img src="~/img/images/secure.png" style="margin-left:35px;">
-
-
-
-                </div>
+                        <td>
+                            Zip:<br>
+                            <input type="text" asp-for="Zip" style="border:1px solid;background-color:#fff;color:black;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Email:<br>
+                            <input type="email" asp-for="Email" style="border:1px solid;background-color:#fff;color:black;">
+                        </td>
+                        <td>
+                            Contact:<br>
+                            <input type="text" asp-for="Number" style="border:1px solid;background-color:#fff;color:black;">
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" asp-for="Amount" value="@ViewData["Amount"].ToString()" />
+                <input type="hidden" asp-for="Service" value="@ViewData["PlanName"].ToString()" />
+                <img src="~/img/images/card-logo.png" /><br />
+                <img src="~/img/images/30-day-guarantee.png" style="width: 100px; height:100px;" />
+                <img src="~/img/images/secure.png" />
             </div>
-            <div class="span6">
-                <span style="font-size:24px;"><b>Your Order</b></span><br><br><br>
-                <div style="border:1px solid;width:80%;height:140px;border-radius:6px;">
-                    <center>
-                        <br>
-                        <p style="font-size:18px;"><b>Plan Name : @ViewData["PlanName"].ToString()</b></p>
-                        <br>
-                        <p style="font-size:18px;"><b>Amount(NZD) : @ViewData["Amount"].ToString()</b></p>
-                    </center>
-                </div><br>
-                <div style="">
-                    <div class="container">
-                        <div class="row">
-                            <div class="panel panel-default" style="border:1px solid;width:453px;margin-left:33px;border-radius:5px;">
-                                <div class="panel-heading">
-
-                                </div>
-                                <table class="table table-fixed">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="term">
-                                                    <center><h5><b>Terms And Conditions For Usage</b></h5></center>
-                                                    <div>
-                                                        <div>
-                                                            <p>
-                                                                <u style="font-weight:bold;font-size:13px;">Refund/Return/Warrantee/Cancellation Policies </u><br />
-                                                                Our returns policy is in addition to your rights under the Consumer Guarantees Act 1993. Under the <strong>30 Days Right of Refund policy</strong>, you can cancel any product/service for a full refund within 30 days of purchase. <br /><br />
-                                                                For <strong>incident-based plans</strong>, you will be eligible for refund when any of the following criterion are met :<br /><br />
-                                                                1. You have all the prerequisites which were required to resolve the problem and Issue was not resolved by a Techvesta Limited team member.<br /><br />
-                                                                2. 30 Days have not passed since the issue was last resolved by Techvesta Ltd technician.<br /><br />
-                                                                3. If your sale plan includes any software purchase, the price of the software will not be refunded in case of cancellation.<br /><br /><br />
-                                                                <u style="font-weight:bold;font-size:13px;">Disputes about Billing</u><br />
-                                                                If you disagree with any charge made to your account, you agree to contact us: <a href="mailto:support@techvesta.co.nz">support@techvesta.co.nz</a> with a view to resolving the dispute prior to making a formal notification to your credit card company. You must contact us either by email or telephone, stating your reasons for dispute of the charge. This will enable us to assess your complaint accurately and promptly and, where justified, credit your card with the disputed amount in a timely manner to avoid any further inconvenience to you.
-                                                            </p>
-                                                        </div>
-
-                                                        <span style="color:#000;font-size:14px;">
-                                                            <br />
-                                                            <input type="checkbox" name="checkbox" style="margin-top:-2px;margin-left:20px;" required>
-                                                            &nbsp;&nbsp;I have read all the terms & conditions, refund policy, privacy policy and the disclaimer. I agree to all the terms.
-                                                        </span>
-                                                    </div>
-
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
+        </div>
+        <div class="span6">
+            <span style="font-size:24px;"><b>Your Order</b></span><br>
+            <div style="border:1px solid;width:80%;height:140px;border-radius:6px;">
+                <center>
+                    <br>
+                    <p style="font-size:18px;"><b>Plan Name : @ViewData["PlanName"].ToString()</b></p>
+                    <br>
+                    <p style="font-size:18px;"><b>Amount(NZD) : @ViewData["Amount"].ToString()</b></p>
+                </center>
+            </div><br>
+            <div style="">
+                <div class="row">
+                    <div class="panel panel-default" style="border:1px solid;width:453px;margin-left:33px;border-radius:5px;">
+                        <div class="panel-heading">
                         </div>
+                        <table class="table table-fixed">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="term">
+                                            <center><h5><b>Terms And Conditions For Usage</b></h5></center>
+                                            <div>
+                                                <div>
+                                                    <p>
+                                                        <u style="font-weight:bold;font-size:13px;">Refund/Return/Warrantee/Cancellation Policies </u><br />
+                                                        Our returns policy is in addition to your rights under the Consumer Guarantees Act 1993. Under the <strong>30 Days Right of Refund policy</strong>, you can cancel any product/service for a full refund within 30 days of purchase. <br /><br />
+                                                        For <strong>incident-based plans</strong>, you will be eligible for refund when any of the following criterion are met :<br /><br />
+                                                        1. You have all the prerequisites which were required to resolve the problem and Issue was not resolved by a Techvesta Limited team member.<br /><br />
+                                                        2. 30 Days have not passed since the issue was last resolved by Techvesta Ltd technician.<br /><br />
+                                                        3. If your sale plan includes any software purchase, the price of the software will not be refunded in case of cancellation.<br /><br /><br />
+                                                        <u style="font-weight:bold;font-size:13px;">Disputes about Billing</u><br />
+                                                        If you disagree with any charge made to your account, you agree to contact us: <a href="mailto:support@techvesta.co.nz">support@techvesta.co.nz</a> with a view to resolving the dispute prior to making a formal notification to your credit card company. You must contact us either by email or telephone, stating your reasons for dispute of the charge. This will enable us to assess your complaint accurately and promptly and, where justified, credit your card with the disputed amount in a timely manner to avoid any further inconvenience to you.
+                                                    </p>
+                                                </div>
+
+                                                <span style="color:#000;font-size:14px;">
+                                                    <br />
+                                                    <input type="checkbox" id="agreed" style="margin-top:-2px;margin-left:20px;" required>
+                                                    &nbsp;&nbsp;I have read all the terms & conditions, refund policy, privacy policy and the disclaimer. I agree to all the terms.
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <center>
-                        <br>
-                        <input type="submit" onclick="validate_form()" value="Proceeds To Pay" class="btn btn-success" style="margin-left:-100px;">
-                    </center>
-
                 </div>
+                <center>
+                    <br>
+                    <input type="submit" onclick="validate_form()" value="Proceeds To Pay" class="btn btn-success" style="margin-left:-100px;">
+                </center>
             </div>
-       
+        </div>
     </div>
-
-
+    <div class="row">
+        <h4 style="color:red" id="errorlbl"></h4>
+    </div>
 </div>
 
-<script>function validate_form() {
+<script>
+    function validate_form() {
         valid = true;
-    /*
-        if (document.contact.name2.value == "") {
-            document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Name box!</span>';
-            valid = false;
-            document.contact.name2.focus();
-            return valid;
+        var checkoutData = {
+            Country: document.getElementById("Country").value,
+            FirstName: document.getElementById("FirstName").value,
+            LastName: document.getElementById("LastName").value,
+            Address: document.getElementById("Address").value,
+            City: document.getElementById("City").value,
+            State: document.getElementById("State").value,
+            Zip: document.getElementById("Zip").value,
+            Email: document.getElementById("Email").value,
+            Number: document.getElementById("Number").value,
+            Service: document.getElementById("Service").value,
+            Amount: parseFloat(document.getElementById("Amount").value)
+        };
+        if (checkoutData.FirstName == "") {
+            document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the First Name box!</span>';
+            return false;
         }
-        if (document.contact.cnum.value == "") {
+        if (checkoutData.LastName == "") {
+            document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Last Name box!</span>';
+            return false;
+        }
+        if (checkoutData.Number == "") {
             document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Contact Number box!</span>';
-            valid = false;
-            document.contact.cnum.focus();
-            return valid;
+            return false;
         }
-        if (document.contact.cnum.value != "") {
-            var y = document.contact.cnum.value;
+        if (checkoutData.Number != "") {
+            var y = checkoutData.Number;
 
             if (isNaN(y) || y.indexOf(" ") != -1) {
                 document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Valid Mobile No.! i.e. No white space and Numeric only</span>';
-                valid = false;
-                document.contact.cnum.focus();
-                return valid;
+                return false;
             }
             if (y.length != 10) {
                 document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Valid Mobile No.! i.e. 10 digits only.</span>';
-                valid = false;
-                document.contact.cnum.focus();
-                return valid;
+                return false;
             }
         }
-        if (document.contact.email.value == "") {
+        if (checkoutData.Email == "") {
             document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the E-mail Id box!</span>';
-            valid = false;
-            document.contact.email.focus();
-            return valid;
+            return false;
         }
-        if (document.contact.comments.value == "") {
-            document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Query box!</span>';
-            valid = false;
-            document.contact.comments.focus();
-            return valid;
+        if (!document.getElementById("agreed").checked) {
+            document.getElementById('errorlbl').innerHTML = '<span class=error>Please agree with "Terms And Conditions For Usage"!</span>';
+            return false;
         }
-        document.getElementById('errorlbl').innerHTML = '<span class=success>Your Query has been Sent Successfully!</span>';
-        */
-        if (!valid) return valid;
         else {
             var stripe = Stripe("@ViewData["Pk"].ToString()");
 
+            var formData = new FormData();
+            formData.append("data", JSON.stringify(checkoutData));
+
             fetch("/Subscription/Checkout", {
                 method: "POST",
+                body: formData
             })
                 .then(function (response) {
                     return response.json();
@@ -229,15 +218,13 @@
                     return stripe.redirectToCheckout({ sessionId: session.id });
                 })
                 .then(function (result) {
-                    // If redirectToCheckout fails due to a browser or network
-                    // error, you should display the localized error message to your
-                    // customer using error.message.
                     if (result.error) {
-                        alert(result.error.message);
+                        document.getElementById('errorlbl').innerHTML = result.error.message;
                     }
                 })
                 .catch(function (error) {
-                    console.error("Error:", error);
+                    console.error("Error:", error.message);
                 });
         }
-    }</script>
+    }
+</script>

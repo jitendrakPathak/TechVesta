@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stripe;
-using TechVesta.Web.StripePayment;
+using TechVesta.Web.Helper;
 
 namespace TechVesta.Web
 {

@@ -31,15 +31,15 @@ namespace TechVesta.Web.Controllers
         {
             return View();
         }
+
         public IActionResult About()
         {
             return View();
         }
 
-        [HttpGet]
         public ViewResult ContactUs()
         {
-                return View();
+            return View();
         }
 
         [HttpPost]
@@ -54,7 +54,7 @@ namespace TechVesta.Web.Controllers
                 message.Subject = $"Inquiry form {contactDTO.Email}";
                 message.Body = new TextPart("html")
                 {
-                    Text = $"<span>Contact Number</span><p>{contactDTO.Cnum}</p><br/><span>Service</span><p>{contactDTO.Services}</p><br/><span>Message</span><p>{contactDTO.Comments}</p>"
+                    Text = $"<span>Contact Number</span><p>{contactDTO.Number}</p><br/><span>Service</span><p>{contactDTO.Service}</p><br/><span>Message</span><p>{contactDTO.Comments}</p>"
                 };
 
                 using (var client = new SmtpClient())

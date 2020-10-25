@@ -1,12 +1,12 @@
 ﻿using System;
 using Stripe;
 
-namespace TechVesta.Web.StripePayment
+namespace TechVesta.Web.Helper
 {
     public class StripeSettings
     {
-        public Decimal Amount { get; set; }
-        public String ServiceName { get; set; }
+        public decimal Amount { get; set; }
+        public string ServiceName { get; set; }
     }
 
     public static class StripeKey

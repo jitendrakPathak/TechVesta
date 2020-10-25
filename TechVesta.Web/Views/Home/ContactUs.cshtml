@@ -7,51 +7,43 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
           crossorigin="" />
-    <style>
-        #map {
-            height: 250px;
-        }
-    </style>
 }
 <div class="container">
     <hr>
     <div class="row">
         <div class="span6">
-
             <div class="alert alert-success hidden" id="contactSuccess">
                 <strong>Success!</strong> Your message has been sent to us.
             </div>
-
             <div class="alert alert-error hidden" id="contactError">
                 <strong>Error!</strong> There was an error sending your message.
             </div>
-
-            <h1 style="color:#0077cc;">Enquiry  <span style="font-size:18px;"> Drop us a line using contact form below </span></h1>
+            <h1 style="color:#0077cc;">Enquiry <span style="font-size:18px;"> Drop us a line using contact form below </span></h1>
             <form name="contact" asp-action="ContactUs" asp-controller="Home" onSubmit="return validate_form()" method="post" class="contact">
                 <div class="row controls">
                     <div class="span3 control-group">
                         <label asp-for="Name">Your Name: *</label>
-                        <input type="text" asp-for="Name" value="" maxlength="100" class="span3" name="Name" id="Name">
+                        <input type="text" asp-for="Name" value="" maxlength="100" class="span3" />
                     </div>
                     <div class="span3 control-group">
                         <label asp-for="Email">Your email address *</label>
-                        <input type="email" asp-for="Email" value="" maxlength="100" class="span3" name="email" id="email">
+                        <input type="email" asp-for="Email" value="" maxlength="100" class="span3" />
                     </div>
                 </div>
                 <div class="row controls">
                     <div class="span3 control-group">
-                        <label asp-for="Cnum">Contact Number: *</label>
-                        <input type="tel" asp-for="Cnum" value="" maxlength="100" class="span3" name="cnum" id="cnum">
+                        <label asp-for="Number">Contact Number: *</label>
+                        <input type="tel" asp-for="Number" value="" maxlength="10" class="span3" />
                     </div>
                     <div class="span3 control-group">
-                        <label asp-for="Services">Required Services</label>
-                        <input type="text" asp-for="Services" value="" maxlength="100" class="span3" name="services" id="services">
+                        <label asp-for="Service">Required Services</label>
+                        <input type="text" asp-for="Service" value="" maxlength="100" class="span3" />
                     </div>
                 </div>
                 <div class="row controls">
                     <div class="span6 control-group">
                         <label asp-for="Comments">Tell Us Everything: *</label>
-                        <textarea maxlength="5000" asp-for="Comments" rows="10" class="span6" name="comments" id="comments"></textarea>
+                        <textarea maxlength="5000" asp-for="Comments" rows="10" class="span6"></textarea>
                     </div>
                 </div>
                 <div class="btn-toolbar">
@@ -65,7 +57,7 @@
             <br><br>
             <img src="~/img/logo.png">
             <hr>
-            <div id="map"></div>
+            <div id="map" style="height:250px;z-index:1;"></div>
 
             <div style="margin-left:80px;">
                 <h4 style="font-size:20px;font-family:Tahoma,sans-serif;color:#330066;"></h4>
@@ -90,7 +82,8 @@
             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
             crossorigin=""></script>
 
-    <script>var map = L.map('map').setView([-37.751991, 175.289007], 13);
+    <script>
+        var map = L.map('map').setView([-37.751991, 175.289007], 13);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -101,49 +94,42 @@
             .openPopup();
 
         function validate_form() {
-            valid = true;
-
-            if (document.contact.name2.value == "") {
+            if (document.contact.Name.value == "") {
                 document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Name box!</span>';
-                valid = false;
-                document.contact.name2.focus();
-                return valid;
+                document.contact.Name.focus();
+                return false;
             }
-            if (document.contact.cnum.value == "") {
+            if (document.contact.Number.value == "") {
                 document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Contact Number box!</span>';
-                valid = false;
-                document.contact.cnum.focus();
-                return valid;
+                document.contact.Number.focus();
+                return false;
             }
-            if (document.contact.cnum.value != "") {
-                var y = document.contact.cnum.value;
+            if (document.contact.Number.value != "") {
+                var y = document.contact.Number.value;
 
                 if (isNaN(y) || y.indexOf(" ") != -1) {
                     document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Valid Mobile No.! i.e. No white space and Numeric only</span>';
-                    valid = false;
-                    document.contact.cnum.focus();
-                    return valid;
+                    document.contact.Number.focus();
+                    return false;
                 }
                 if (y.length != 10) {
                     document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Valid Mobile No.! i.e. 10 digits only.</span>';
-                    valid = false;
-                    document.contact.cnum.focus();
-                    return valid;
+                    document.contact.Number.focus();
+                    return false;
                 }
             }
-            if (document.contact.email.value == "") {
+            if (document.contact.Email.value == "") {
                 document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the E-mail Id box!</span>';
-                valid = false;
-                document.contact.email.focus();
-                return valid;
+                document.contact.Email.focus();
+                return false;
             }
-            if (document.contact.comments.value == "") {
+            if (document.contact.Comments.value == "") {
                 document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Query box!</span>';
-                valid = false;
-                document.contact.comments.focus();
+                document.contact.Comments.focus();
                 return valid;
             }
             document.getElementById('errorlbl').innerHTML = '<span class=success>Your Query has been Sent Successfully!</span>';
-            return valid;
-        }</script>
+            return true;
+        }
+    </script>
 }
