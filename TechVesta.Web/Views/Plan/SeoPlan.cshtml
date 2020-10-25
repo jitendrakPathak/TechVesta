@@ -1,5 +1,5 @@
 ﻿    @{
-        ViewData["Title"] = "SEO Plans offered by TechVesta";
+        ViewData["Title"] = "SEO Plans";
     }
     <div class="container">
 
@@ -16,7 +16,7 @@
                         <div class="submenu">
                             5 Keywords <br><br>
 
-                            <form method="post" action="subscription.php">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="895.00" asp-route-planName="MINI Plan">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="895" />
@@ -40,7 +40,7 @@
                         <h3 style="font-size:20px;height:30px;">STARTER Plan <br />NZD 1785.00</h3>
                         <div class="submenu">
                             10 Keywords<br><br>
-                            <form method="post" action="subscription.php">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="1785.00" asp-route-planName="STARTER Plan">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="1785" />
@@ -64,7 +64,7 @@
                         <h3 style="font-size:20px;height:30px;">BRONZE Plan <br />NZD 2675.00</h3>
                         <div class="submenu">
                             20 Keywords<br><br>
-                            <form method="post" action="subscription.php">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="2675" asp-route-planName="BRONZE Plan">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="2675" />
@@ -94,7 +94,7 @@
                         <h3 style="font-size:20px;height:30px;">SILVER Plan <br />NZD 3575.00</h3>
                         <div class="submenu">
                             40 Keywords<br /><br />
-                            <form method="post" action="subscription.php">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="3575.00" asp-route-planName="SILVER Plan">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="3575" />
@@ -119,7 +119,7 @@
                         <h3 style="font-size:20px;height:30px;">GOLD Plan <br />NZD 4355.00</h3>
                         <div class="submenu">
                             80 Keywords<br><br>
-                            <form method="post" action="subscription.php">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="4355.00" asp-route-planName="GOLD Plan">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="4355" />
@@ -143,7 +143,7 @@
                         <h3 style="font-size:20px;height:30px;">Customize Plan <br />NZD 5355.00</h3>
                         <div class="submenu">
                             As per the requirement <br /> Plans will be customized. for 6 Months<br /><br />
-                            <form method="post" action="subscription.php">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="5355.00" asp-route-planName="Customize Plan">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="5355" />

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Support Plans offered by TechVesta";
+    ViewData["Title"] = "Support Plans";
 }
 <div class="container">
     <hr>
@@ -26,7 +26,7 @@
                         </span> <br>
                         <h3><b>NZD 74.99</b></h3>
                         <br />
-                        <form method="post" action="subscription.php">
+                        <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="74.99" asp-route-planName="One time fixation(For One Device)">
                             <input type="hidden" name="brandimage" value="computer1.png">
                             <input type="hidden" name="support" value="One time fixation (For One Device)">
                             <input type="hidden" name="amt" value="74.99" />
@@ -61,7 +61,7 @@
                         </span> <br>
                         <h3><b>NZD 104.99</b></h3>
                         <br />
-                        <form method="post" action="subscription.php">
+                        <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="104.99" asp-route-planName="One time fixation(For All Devices)">
                             <input type="hidden" name="brandimage" value="computer1.png">
                             <input type="hidden" name="support" value="One time fixation (For All Devices)">
                             <input type="hidden" name="amt" value="104.99" />
@@ -96,7 +96,7 @@
                         </span> <br>
                         <h3><b>NZD 119.99</b></h3>
                         <br />
-                        <form method="post" action="subscription.php">
+                        <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="119.99" asp-route-planName="3 Months unlimited Support(For One Device)">
                             <input type="hidden" name="brandimage" value="computer1.png">
                             <input type="hidden" name="support" value="3 Months unlimited Support (For One Device)">
                             <input type="hidden" name="amt" value="119.99" />
@@ -131,7 +131,7 @@
                         </span> <br>
                         <h3><b>NZD 149.99</b></h3>
                         <br />
-                        <form method="post" action="subscription.php">
+                        <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="149.99" asp-route-planName="3 months unlimited support(For All Devices)">
                             <input type="hidden" name="brandimage" value="computer1.png">
                             <input type="hidden" name="support" value="3 Months unlimited Support (For All Devices)">
                             <input type="hidden" name="amt" value="149.99" />
@@ -166,7 +166,7 @@
                         </span> <br>
                         <h3><b>NZD 224.99</b></h3>
                         <br />
-                        <form method="post" action="subscription.php">
+                        <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="224.99" asp-route-planName="6 months unlimited support(For One Device)">
                             <input type="hidden" name="brandimage" value="computer1.png">
                             <input type="hidden" name="support" value="6 months unlimited support (For One Device)">
                             <input type="hidden" name="amt" value="224.99" />
@@ -201,7 +201,7 @@
                         </span> <br>
                         <h3><b>NZD 299.99</b></h3>
                         <br />
-                        <form method="post" action="subscription.php">
+                        <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="299.99" asp-route-planName="6 months unlimited support(For All Devices)">
                             <input type="hidden" name="brandimage" value="computer1.png">
                             <input type="hidden" name="support" value="6 months unlimited support (For All Devices)">
                             <input type="hidden" name="amt" value="299.99" />
@@ -240,7 +240,7 @@
                         </span> <br>
                         <h3><b>NZD 371.99</b></h3>
                         <br />
-                        <form method="post" action="subscription.php">
+                        <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="371.99" asp-route-planName="1 YEAR UNLIMITED SUPPORT (FOR ALL DEVICES)">
                             <input type="hidden" name="brandimage" value="computer1.png">
                             <input type="hidden" name="support" value="1 YEAR UNLIMITED SUPPORT (FOR ONE DEVICE)">
                             <input type="hidden" name="amt" value="371.99" />
@@ -275,7 +275,7 @@
                         </span> <br>
                         <h3><b>NZD 599.99</b></h3>
                         <br />
-                        <form method="post" action="subscription.php">
+                        <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="599.99" asp-route-planName="1 YEAR UNLIMITED SUPPORT (FOR ALL DEVICES)">
                             <input type="hidden" name="brandimage" value="computer1.png">
                             <input type="hidden" name="support" value="1 YEAR UNLIMITED SUPPORT (FOR ALL DEVICES)">
                             <input type="hidden" name="amt" value="599.99" />

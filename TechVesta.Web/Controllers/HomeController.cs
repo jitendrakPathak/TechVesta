@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TechVesta.Web.Models;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
+using TechVesta.Web.DTO;
 
 namespace TechVesta.Web.Controllers
 {
@@ -32,9 +36,46 @@ namespace TechVesta.Web.Controllers
             return View();
         }
 
-        public IActionResult ContactUs()
+        [HttpGet]
+        public ViewResult ContactUs()
         {
-            return View();
+                return View();
+        }
+
+        [HttpPost]
+        public IActionResult ContactUs(ContactDTO contactDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                var message = new MimeMessage();
+                message.To.Add(new MailboxAddress("Murph Pathak", "murphamelibre@gmail.com"));
+                message.Cc.Add(new MailboxAddress(contactDTO.Name, contactDTO.Email));
+                message.From.Add(new MailboxAddress(contactDTO.Name, contactDTO.Email));
+                message.Subject = $"Inquiry form {contactDTO.Email}";
+                message.Body = new TextPart("html")
+                {
+                    Text = $"<span>Contact Number</span><p>{contactDTO.Cnum}</p><br/><span>Service</span><p>{contactDTO.Services}</p><br/><span>Message</span><p>{contactDTO.Comments}</p>"
+                };
+
+                using (var client = new SmtpClient())
+                {
+                    client.Connect("smtp.gmail.com", 587, false);
+                    client.Authenticate("murphamelibre@gmail.com", "Murphy@123");
+                    client.Send(message);
+                    client.Disconnect(true);
+                }
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return Index();
+            }
+
+        }
+        public void SaveContact(JsonResult data)
+        {
+            var contactFormData = data;
+            //ContactDTO.Name = contactFormData.
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

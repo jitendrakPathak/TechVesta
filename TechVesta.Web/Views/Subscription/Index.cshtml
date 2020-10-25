@@ -1,6 +1,9 @@
-﻿@{
+﻿@model TechVesta.Web.StripePayment.StripeSettings
+@{
     ViewData["Title"] = "Subscription";
 }
+<script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+<script src="https://js.stripe.com/v3/"></script>
 
 <div class="container">
     <hr>
@@ -13,99 +16,102 @@
     </div>
 
     <div class="row">
-        <form action="#" method="post">
+        
             <div class="span6">
                 <span style="font-size:24px;"><b>Billing Details</b></span><br>
                 <span style="font-size:14px;">
                     <b>
-                        (The name “Techvesta Limited” will appear on cardholder statement for any transactions through this website)<br /><br />
-                        <span style="font-size:14px;">
-                            <b>
-                                Techvesta<br />
-                                5 Mcmeekan Avenue, Chartwell, Hamilton 3210, New Zealand
-                            </b>
-                        </span>
-                        <br /><br />
-                        <div class="formarea">
+                        (The name “Techvesta Limited” will appear on cardholder statement for any transactions through this website)
+                    </b>
+                </span>
+                <br /><br />
+                <span style="font-size:14px;">
+                    <b>
+                        Techvesta<br />
+                        5 Mcmeekan Avenue, Chartwell, Hamilton 3210, New Zealand
+                    </b>
+                </span>
+                <br /><br />
+                <div class="formarea">
 
-                            <table>
-                                <tr>
-                                    <td colspan="2">
-                                        Select Country<br>
-                                        <select name="country" style="border:1px solid;background-color:#fff;color:black;width:90%;height:40px;border-radius:6px;">
-                                            <option>Australia</option>
-                                            <option>Canada</option>
-                                            <option>New Zealand</option>
-                                            <option>USA</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <br>First Name:
-                                        <input type="text" name="firstname" style="border:1px solid;background-color:#fff;color:black;" onChange="javascript:return checkEmail();">
-                                    </td>
-                                    <td>
-                                        <br>Last Name:
-                                        <input type="text" name="lastname" style="border:1px solid;background-color:#fff;color:black;">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Address:<br>
-                                        <input type="text" name="address" style="width:175%;border:1px solid;background-color:#fff;color:black;">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        City:<br>
-                                        <input type="text" name="city" style="width:175%;border:1px solid;background-color:#fff;color:black;">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        State:<br>
-                                        <input type="text" name="state" style="border:1px solid;background-color:#fff;color:black;">
-                                    </td>
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                Select Country<br>
+                                <select name="country" style="border:1px solid;background-color:#fff;color:black;width:90%;height:40px;border-radius:6px;">
+                                    <option>Australia</option>
+                                    <option>Canada</option>
+                                    <option>New Zealand</option>
+                                    <option>USA</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br>First Name:
+                                <input type="text" name="firstname" style="border:1px solid;background-color:#fff;color:black;" onChange="javascript:return checkEmail();">
+                            </td>
+                            <td>
+                                <br>Last Name:
+                                <input type="text" name="lastname" style="border:1px solid;background-color:#fff;color:black;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Address:<br>
+                                <input type="text" name="address" style="width:175%;border:1px solid;background-color:#fff;color:black;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                City:<br>
+                                <input type="text" name="city" style="width:175%;border:1px solid;background-color:#fff;color:black;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                State:<br>
+                                <input type="text" name="state" style="border:1px solid;background-color:#fff;color:black;">
+                            </td>
 
-                                    <td>
-                                        Zip:<br>
-                                        <input type="text" name="zip" style="border:1px solid;background-color:#fff;color:black;">
-                                    </td>
+                            <td>
+                                Zip:<br>
+                                <input type="text" name="zip" style="border:1px solid;background-color:#fff;color:black;">
+                            </td>
 
-                                </tr>
+                        </tr>
 
-                                <tr>
-                                    <td>
-                                        Email:<br>
-                                        <input type="text" name="email" style="border:1px solid;background-color:#fff;color:black;">
-                                    </td>
-                                    <td>
-                                        Contact:<br>
-                                        <input type="text" name="contact" style="border:1px solid;background-color:#fff;color:black;">
-                                        <input type="hidden" name="amount" value="<?php echo $amount;?>" style="border:1px solid;background-color:#fff;color:black;">
-                                    </td>
-
-
-                                </tr>
-                            </table>
-
-                            <img src="images/card-logo.png"><br />
-                            <img src="images/30-day-guarantee.png" style="width: 100px; height:100px;">
-                            <img src="images/secure.png" style="margin-left:35px;">
+                        <tr>
+                            <td>
+                                Email:<br>
+                                <input type="text" name="email" style="border:1px solid;background-color:#fff;color:black;">
+                            </td>
+                            <td>
+                                Contact:<br>
+                                <input type="text" name="contact" style="border:1px solid;background-color:#fff;color:black;">
+                                <input type="hidden" name="Amount" asp-for="Amount" value="@ViewData["Amount"].ToString()" style="border:1px solid;background-color:#fff;color:black;">
+                            </td>
 
 
+                        </tr>
+                    </table>
 
-                        </div>
+                    <img src="~/img/images/card-logo.png"><br />
+                    <img src="~/img/images/30-day-guarantee.png" style="width: 100px; height:100px;">
+                    <img src="~/img/images/secure.png" style="margin-left:35px;">
+
+
+
+                </div>
             </div>
             <div class="span6">
                 <span style="font-size:24px;"><b>Your Order</b></span><br><br><br>
                 <div style="border:1px solid;width:80%;height:140px;border-radius:6px;">
                     <center>
                         <br>
-                        <p style="font-size:18px;"><b>Plan Name : <?php echo $planname;?></b></p>
+                        <p style="font-size:18px;"><b>Plan Name : @ViewData["PlanName"].ToString()</b></p>
                         <br>
-                        <p style="font-size:18px;"><b>Amount(NZD) : <?php echo $amount;?></b></p>
+                        <p style="font-size:18px;"><b>Amount(NZD) : @ViewData["Amount"].ToString()</b></p>
                     </center>
                 </div><br>
                 <div style="">
@@ -120,7 +126,7 @@
                                         <tr>
                                             <td>
                                                 <div class="term">
-                                                    <center><h5><b>Terms And Conditions For Usage</h5></b></center>
+                                                    <center><h5><b>Terms And Conditions For Usage</b></h5></center>
                                                     <div>
                                                         <div>
                                                             <p>
@@ -153,12 +159,12 @@
                     </div>
                     <center>
                         <br>
-                        <input type="submit" value="Proceeds To Pay" class="btn btn-success" style="margin-left:-100px;">
+                        <input type="submit" onclick="validate_form()" value="Proceeds To Pay" class="btn btn-success" style="margin-left:-100px;">
                     </center>
 
                 </div>
             </div>
-        </form>
+       
     </div>
 
 
@@ -166,7 +172,7 @@
 
 <script>function validate_form() {
         valid = true;
-
+    /*
         if (document.contact.name2.value == "") {
             document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Name box!</span>';
             valid = false;
@@ -208,5 +214,30 @@
             return valid;
         }
         document.getElementById('errorlbl').innerHTML = '<span class=success>Your Query has been Sent Successfully!</span>';
-        return valid;
+        */
+        if (!valid) return valid;
+        else {
+            var stripe = Stripe("@ViewData["Pk"].ToString()");
+
+            fetch("/Subscription/Checkout", {
+                method: "POST",
+            })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (session) {
+                    return stripe.redirectToCheckout({ sessionId: session.id });
+                })
+                .then(function (result) {
+                    // If redirectToCheckout fails due to a browser or network
+                    // error, you should display the localized error message to your
+                    // customer using error.message.
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                })
+                .catch(function (error) {
+                    console.error("Error:", error);
+                });
+        }
     }</script>

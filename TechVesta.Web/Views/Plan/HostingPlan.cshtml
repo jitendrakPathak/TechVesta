@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Hosting Plans offered by TechVesta";
+    ViewData["Title"] = "Hosting Plans";
 }
     <div class="container">
         <hr>
@@ -13,7 +13,7 @@
                             Single Domain<br />
                             Unlimited Space<br />
                             Unlimited Bandwidth<br />
-                            <form method="post" action="subscription.php">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="175.00" asp-route-planName="Linux Plan">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="175" />
@@ -36,7 +36,7 @@
                             Single Domain<br>
                             Unlimited Space<br>
                             Unlimited Bandwidth<br>
-                            <form method="post" action="subscription.php">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="230.00" asp-route-planName="Windows Plan">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="230" />
@@ -57,7 +57,7 @@
                         <h3 style="font-size:20px;height:50px;">E-Commerce Plan NZD 265/month</h3><hr />
                         <div class="submenu">
                             500 Product <br /><br /><br />
-                            <form method="post" action="subscription.php">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="265.00" asp-route-planName="E-Commerce Plan">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="265" />

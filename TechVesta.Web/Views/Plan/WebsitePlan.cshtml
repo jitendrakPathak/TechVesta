@@ -1,5 +1,5 @@
 ﻿    @{
-        ViewData["Title"] = "Web Sites Plan";
+        ViewData["Title"] = "Websites Plan";
     }
     <div class="container">
         <hr>
@@ -13,7 +13,7 @@
                             5 Pages <br />
                             Free Facebook Pages<br />
                             Free twitter Pages<br /><br />
-                            <form method="post" asp-controller="subscription" asp-action="Index" asp-route="">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="225.00" asp-route-planName="Basic(w1)">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="225" />
@@ -36,7 +36,7 @@
                             12 Pages <br />
                             Free Facebook Pages<br />
                             Free twitter Pages<br /><br />
-                            <form method="post" action="subscription.php">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="445.00" asp-route-planName="Economy(w2)">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="445" />
@@ -60,7 +60,7 @@
                             Free Facebook Pages<br />
                             Free twitter Pages<br />
                             Hosting, Seo For 1 Month<br />
-                            <form method="post" action="subscription.php">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="575.00" asp-route-planName="Deluxe(w3)">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="575" />
@@ -91,7 +91,7 @@
                             Free twitter Pages<br />
                             Hosting<br />
                             Seo For 1 Month<br />
-                            <form method="post" action="subscription.php">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="975.00" asp-route-planName="Deluxe(w3)">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="975" />
@@ -120,7 +120,7 @@
                             Free twitter Pages<br />
                             Hosting<br />
                             Seo For 1 Month<br />
-                            <form method="post" action="subscription.php">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="1775.00" asp-route-planName="Unlimited(w5)">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="1775" />
@@ -146,7 +146,7 @@
                             prices can be
                             customized as per
                             the requirement for 6 Months
-                            <form method="post" action="subscription.php">
+                            <form method="post" asp-controller="Subscription" asp-action="Index" asp-route-amount="2700.00" asp-route-planName="Customize(w6)">
                                 <input type="hidden" name="brandimage" value="computer1.png">
                                 <input type="hidden" name="support" value="Account fixation and Network security Setup Support">
                                 <input type="hidden" name="amt" value="2700" />

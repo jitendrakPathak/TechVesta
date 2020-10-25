@@ -18,6 +18,7 @@ namespace TechVesta.Web.Controllers
 
         public IActionResult WebsitePlan()
         {
+
             return View();
         }
 
