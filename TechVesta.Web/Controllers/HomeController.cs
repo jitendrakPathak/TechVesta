@@ -10,11 +10,14 @@ using MailKit.Net.Smtp;
 using MailKit;
 using MimeKit;
 using TechVesta.Web.DTO;
+using Microsoft.Extensions.Configuration;
+using TechVesta.Web.Helper;
 
 namespace TechVesta.Web.Controllers
 {
     public class HomeController : Controller
     {
+       
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -46,9 +49,9 @@ namespace TechVesta.Web.Controllers
         public IActionResult ContactUs(ContactDTO contactDTO)
         {
             if (ModelState.IsValid)
-            {
+            {              
                 var message = new MimeMessage();
-                message.To.Add(new MailboxAddress("Murph Pathak", "murphamelibre@gmail.com"));
+                message.To.Add(new MailboxAddress("Techvesta Limited", EmailSetting.emailID));
                 message.Cc.Add(new MailboxAddress(contactDTO.Name, contactDTO.Email));
                 message.From.Add(new MailboxAddress(contactDTO.Name, contactDTO.Email));
                 message.Subject = $"Inquiry form {contactDTO.Email}";
@@ -59,8 +62,8 @@ namespace TechVesta.Web.Controllers
 
                 using (var client = new SmtpClient())
                 {
-                    client.Connect("smtp.gmail.com", 587, false);
-                    client.Authenticate("murphamelibre@gmail.com", "Murphy@123");
+                    client.Connect(EmailSetting.smtp, EmailSetting.port, false);
+                    client.Authenticate(EmailSetting.emailID, EmailSetting.password);
                     client.Send(message);
                     client.Disconnect(true);
                 }

@@ -13,16 +13,24 @@ using Stripe.Checkout;
 using TechVesta.Web.DTO;
 using TechVesta.Web.Helper;
 using System.Text.Json;
+using Microsoft.Extensions.Configuration;
 
 namespace TechVesta.Web.Controllers
 {
     public class SubscriptionController : Controller
     {
+        public SubscriptionController(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
         public ActionResult Index(decimal amount, string planName)
         {
             ViewData["Amount"] = amount;
             ViewData["PlanName"] = planName;
-            ViewData["Pk"] = StripeKey.PublishableKey;
+            ViewData["Pk"] = Configuration["IsLive"].ToString() == "false" ? StripeKey.PublishableKey_Test : StripeKey.PublishableKey_Live;
             return View();
         }
 
@@ -32,24 +40,24 @@ namespace TechVesta.Web.Controllers
             if (data.Amount > 0)
             {
                 MimeMessage message = new MimeMessage();
-                message.To.Add(new MailboxAddress("Murph Pathak", "murphamelibre@gmail.com"));
-                message.Cc.Add(new MailboxAddress(data.FullName, data.Email));
+                message.To.Add(new MailboxAddress("Techvesta Limited", EmailSetting.emailID));
+                //message.Cc.Add(new MailboxAddress(data.FullName, data.Email));
                 message.From.Add(new MailboxAddress(data.FullName, data.Email));
                 message.Subject = $"Payment initiated by {data.Email}";
                 message.Body = new TextPart("html")
                 {
-                    Text = $"<span>Plan</span><p>{data.Service}</p>br/><span>Amount</span><p>{data.Amount}</p><br/><span>Contact Number</span><p>{data.Number}</p><br/><span>Address</span><p>{data.Address}, {data.City}, {data.State}, {data.Country}</p>"
+                    Text = $"<span>Plan</span><p>{data.Service}</p><br/><span>Email</span><p>{data.Email}</p><br/><span>Amount</span><p>{data.Amount}</p><br/><span>Contact Number</span><p>{data.Number}</p><br/><span>Address</span><p>{data.Address}, {data.City}, {data.State}, {data.Country}</p>"
                 };
 
                 using (var client = new SmtpClient())
                 {
-                    client.Connect("smtp.gmail.com", 587, false);
-                    client.Authenticate("murphamelibre@gmail.com", "Murphy@123");
+                    client.Connect(EmailSetting.smtp, EmailSetting.port, false);
+                    client.Authenticate(EmailSetting.emailID, EmailSetting.password);
                     client.Send(message);
                     client.Disconnect(true);
                 }
 
-                var domain = Request.Host;
+                var domain = Request.Scheme + "://" + Request.Host.Value;
                 var options = new SessionCreateOptions
                 {
                     PaymentMethodTypes = new List<string>
@@ -62,7 +70,7 @@ namespace TechVesta.Web.Controllers
                   {
                     PriceData = new SessionLineItemPriceDataOptions
                     {
-                      UnitAmount = (long?)data.Amount,
+                      UnitAmount = (long?)data.Amount *100,
                       Currency = "nzd",
                       ProductData = new SessionLineItemPriceDataProductDataOptions
                       {

@@ -34,9 +34,14 @@ namespace TechVesta.Web
             services.AddMemoryCache();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,IConfiguration configuration)
         {
-            StripeConfiguration.ApiKey = StripeKey.SecretKey;
+            StripeConfiguration.ApiKey = configuration["IsLive"].ToString() == "false" ? StripeKey.SecretKey_Test : StripeKey.SecretKey_Live;
+
+            EmailSetting.emailID = Configuration["EmailID"].ToString();
+            EmailSetting.password = Configuration["Password"].ToString();
+            EmailSetting.port = Convert.ToInt16(Configuration["Port"].ToString());
+            EmailSetting.smtp = Configuration["SMTP"].ToString();
 
             if (env.IsDevelopment())
             {
