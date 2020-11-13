@@ -93,15 +93,27 @@
                 <img src="~/img/images/secure.png" />
             </div>
         </div>
-        <div class="span6">
+        <div class="span6 form-horizontal">
             <span style="font-size:24px;"><b>Your Order</b></span><br>
-            <div style="border:1px solid;width:80%;height:140px;border-radius:6px;">
-                <center>
-                    <br>
-                    <p style="font-size:18px;"><b>Plan Name : @ViewData["PlanName"].ToString()</b></p>
-                    <br>
-                    <p style="font-size:18px;"><b>Amount(NZD) : @ViewData["Amount"].ToString()</b></p>
-                </center>
+            <div style="border:1px solid;width:80%;height:140px;border-radius:6px;" class="control-group">
+                    <div class="control-group">
+                        <label class="control-label">Plan Name</label>
+                        <div class="controls" style="padding-top:5px">
+                            @ViewData["PlanName"].ToString()
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Amount(NZD)</label>
+                        <div class="controls" style="padding-top:5px">
+                            @ViewData["Amount"].ToString()
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="customAmount">Custom Amount(NZD)</label>
+                        <div class="controls">
+                            <input type="number" id="customAmount" placeholder="00.00" />
+                        </div>
+                    </div>
             </div><br>
             <div style="">
                 <div class="row">
@@ -155,7 +167,7 @@
 
 <script>
     function validate_form() {
-        valid = true;
+        document.getElementById('errorlbl').innerHTML = "";
         var checkoutData = {
             Country: document.getElementById("Country").value,
             FirstName: document.getElementById("FirstName").value,
@@ -167,43 +179,54 @@
             Email: document.getElementById("Email").value,
             Number: document.getElementById("Number").value,
             Service: document.getElementById("Service").value,
-            Amount: parseFloat(document.getElementById("Amount").value)
+            CustomAmount: document.getElementById("customAmount").value,
+            OldAmount: document.getElementById("Amount").value,
+            Amount: 0
         };
+
         if (checkoutData.FirstName == "") {
-            document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the First Name box!</span>';
+            document.getElementById('errorlbl').innerHTML = '<span class=error>Please enter the valid First Name.</span>';
             return false;
         }
         if (checkoutData.LastName == "") {
-            document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Last Name box!</span>';
+            document.getElementById('errorlbl').innerHTML = '<span class=error>Please enter the valid Last Name.</span>';
             return false;
         }
         if (checkoutData.Number == "") {
-            document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Contact Number box!</span>';
+            document.getElementById('errorlbl').innerHTML = '<span class=error>Please enter the valid Contact Number.</span>';
             return false;
         }
         if (checkoutData.Number != "") {
             var y = checkoutData.Number;
 
             if (isNaN(y) || y.indexOf(" ") != -1) {
-                document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Valid Mobile No.! i.e. No white space and Numeric only</span>';
+                document.getElementById('errorlbl').innerHTML = '<span class=error>Please enter the valid Mobile No. i.e. No white space and Numeric only</span>';
                 return false;
             }
             if (y.length != 10) {
-                document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the Valid Mobile No.! i.e. 10 digits only.</span>';
+                document.getElementById('errorlbl').innerHTML = '<span class=error>Please enter the valid Mobile No. i.e. 10 digits only.</span>';
                 return false;
             }
         }
-        if (checkoutData.Email == "") {
-            document.getElementById('errorlbl').innerHTML = '<span class=error>Please fill in the E-mail Id box!</span>';
+        var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (checkoutData.Email == "" || mailformat.test(checkoutData.Email) == false) {
+            document.getElementById('errorlbl').innerHTML = '<span class=error>Please enter the valid E-mail address.</span>';
             return false;
         }
+        if (checkoutData.CustomAmount != "") {
+            if (isNaN(checkoutData.CustomAmount) || checkoutData.CustomAmount.indexOf(" ") != -1) {
+                document.getElementById('errorlbl').innerHTML = '<span class=error>Please enter the valid Amount i.e. No white space and Numeric only</span>';
+                return false;
+            }
+        }
         if (!document.getElementById("agreed").checked) {
-            document.getElementById('errorlbl').innerHTML = '<span class=error>Please agree with "Terms And Conditions For Usage"!</span>';
+            document.getElementById('errorlbl').innerHTML = '<span class=error>Please agree with "Terms And Conditions For Usage".</span>';
             return false;
         }
         else {
-            var stripe = Stripe("@ViewData["Pk"].ToString()");
+            checkoutData.Amount = parseFloat(checkoutData.CustomAmount == "" || parseFloat(checkoutData.CustomAmount) == 0 ? checkoutData.OldAmount : checkoutData.CustomAmount);
 
+            var stripe = Stripe("@ViewData["Pk"].ToString()");
             var formData = new FormData();
             formData.append("data", JSON.stringify(checkoutData));
 

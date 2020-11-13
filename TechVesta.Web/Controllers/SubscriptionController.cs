@@ -51,7 +51,7 @@ namespace TechVesta.Web.Controllers
 
                 using (var client = new SmtpClient())
                 {
-                    client.Connect(EmailSetting.smtp, EmailSetting.port, false);
+                    client.Connect(EmailSetting.smtp, EmailSetting.port, true);
                     client.Authenticate(EmailSetting.emailID, EmailSetting.password);
                     client.Send(message);
                     client.Disconnect(true);
