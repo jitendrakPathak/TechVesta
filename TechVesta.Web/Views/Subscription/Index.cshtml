@@ -96,24 +96,25 @@
         <div class="span6 form-horizontal">
             <span style="font-size:24px;"><b>Your Order</b></span><br>
             <div style="border:1px solid;width:80%;height:140px;border-radius:6px;" class="control-group">
-                    <div class="control-group">
-                        <label class="control-label">Plan Name</label>
-                        <div class="controls" style="padding-top:5px">
-                            @ViewData["PlanName"].ToString()
-                        </div>
+                <div class="control-group">
+                    <label class="control-label">Plan Name</label>
+                    <div class="controls row" style="padding-top:5px">
+                        <label id="customLabel" style="display: block; float: left;"></label>
+                        <label style="display: block;float: left;">@ViewData["PlanName"].ToString()</label>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label">Amount(NZD)</label>
-                        <div class="controls" style="padding-top:5px">
-                            @ViewData["Amount"].ToString()
-                        </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Amount(NZD)</label>
+                    <div class="controls" style="padding-top:5px">
+                        <label>@ViewData["Amount"].ToString()</label>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label" for="customAmount">Custom Amount(NZD)</label>
-                        <div class="controls">
-                            <input type="number" id="customAmount" placeholder="00.00" />
-                        </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="customAmount">Custom Amount(NZD)</label>
+                    <div class="controls">
+                        <input type="number" id="customAmount" placeholder="00.00" />
                     </div>
+                </div>
             </div><br>
             <div style="">
                 <div class="row">
@@ -165,7 +166,8 @@
     </div>
 </div>
 
-<script>
+@section scripts {
+    <script>
     function validate_form() {
         document.getElementById('errorlbl').innerHTML = "";
         var checkoutData = {
@@ -225,6 +227,7 @@
         }
         else {
             checkoutData.Amount = parseFloat(checkoutData.CustomAmount == "" || parseFloat(checkoutData.CustomAmount) == 0 ? checkoutData.OldAmount : checkoutData.CustomAmount);
+            checkoutData.Service = checkoutData.CustomAmount == "" || parseFloat(checkoutData.CustomAmount) == 0 ? checkoutData.Service : "Customized - "+checkoutData.Service;
 
             var stripe = Stripe("@ViewData["Pk"].ToString()");
             var formData = new FormData();
@@ -250,4 +253,13 @@
                 });
         }
     }
-</script>
+
+    $("#customAmount").change(function (element) {
+        if ($(this).val() > 0) {
+            $("#customLabel").html("Customized -");
+        }
+        else
+            $("#customLabel").html("");
+    });
+    </script>
+}
