@@ -71,7 +71,7 @@ namespace TechVesta.Web.Controllers
                     PriceData = new SessionLineItemPriceDataOptions
                     {
                       UnitAmount = (long?)data.Amount *100,
-                      Currency = "nzd",
+                      Currency = data.Currency,
                       ProductData = new SessionLineItemPriceDataProductDataOptions
                       {
                         Name = data.Service,

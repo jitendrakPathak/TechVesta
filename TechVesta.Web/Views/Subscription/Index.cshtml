@@ -95,7 +95,7 @@
         </div>
         <div class="span6 form-horizontal">
             <span style="font-size:24px;"><b>Your Order</b></span><br>
-            <div style="border:1px solid;width:80%;height:140px;border-radius:6px;" class="control-group">
+            <div style="border:1px solid;width:80%;height:200px;border-radius:6px;" class="control-group">
                 <div class="control-group">
                     <label class="control-label">Plan Name</label>
                     <div class="controls row" style="padding-top:5px">
@@ -104,13 +104,24 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label">Amount(NZD)</label>
+                    <label class="control-label">Currency</label>
+                    <div class="controls" style="padding-top:5px">
+                        <select id="Currency">
+                            <option value="nzd">NZD</option>
+                            <option value="aud">AUD</option>
+                            <option value="cad">CAD</option>
+                            <option value="usd">USD</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Amount</label>
                     <div class="controls" style="padding-top:5px">
                         <label>@ViewData["Amount"].ToString()</label>
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="customAmount">Custom Amount(NZD)</label>
+                    <label class="control-label" for="customAmount">Custom Amount</label>
                     <div class="controls">
                         <input type="number" id="customAmount" placeholder="00.00" />
                     </div>
@@ -183,6 +194,7 @@
             Service: document.getElementById("Service").value,
             CustomAmount: document.getElementById("customAmount").value,
             OldAmount: document.getElementById("Amount").value,
+            Currency: document.getElementById("Currency").value,
             Amount: 0
         };
 

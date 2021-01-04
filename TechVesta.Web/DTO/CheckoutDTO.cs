@@ -17,5 +17,6 @@ namespace TechVesta.Web.DTO
         public string Number { get; set; }
         public string Service { get; set; }
         public decimal Amount { get; set; }
+        public string Currency { get; set; }
     }
 }
